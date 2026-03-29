@@ -6,7 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: lineage-22.1 # 你的目标分支
+          ref: lineage-22.2 # 你的目标分支
           fetch-depth: 0
       - name: Merge Google LTS
         run: |
