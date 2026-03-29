@@ -17,4 +17,4 @@ jobs:
           git merge upstream/android15-6.6-lts --no-commit --allow-unrelated-histories
           # 如果有冲突，这里会报错，你需要手动处理
           git commit -m "Auto Merge LTS"
-          git push origin lineage-22.1
+          git push origin lineage-22.2
