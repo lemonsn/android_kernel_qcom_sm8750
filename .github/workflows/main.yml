@@ -1,0 +1,20 @@
+name: Sync LTS Kernel
+on: workflow_dispatch # 手动点击运行
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: lineage-22.1 # 你的目标分支
+          fetch-depth: 0
+      - name: Merge Google LTS
+        run: |
+          git config user.name "bot"
+          git config user.email "bot@github.com"
+          git remote add upstream https://android.googlesource.com
+          git fetch upstream android15-6.6-lts
+          git merge upstream/android15-6.6-lts --no-commit --allow-unrelated-histories
+          # 如果有冲突，这里会报错，你需要手动处理
+          git commit -m "Auto Merge LTS"
+          git push origin lineage-22.1
